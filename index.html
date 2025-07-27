@@ -4,100 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Científica</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body data-bs-theme="light">
-    <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
-        <div class="row w-100" style="max-width: 1200px;">
-            <!-- Calculator -->
-            <div class="col-lg-8">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <div class="mb-3">
-                            <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
-                        </div>
-                        <div class="row g-2">
-                            <!-- Scientific -->
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="sin(">sin</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="cos(">cos</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="tan(">tan</button></div>
-                            <div class="col-3"><button class="btn btn-info w-100" data-value="Math.PI">π</button></div>
-
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="asin(">sin⁻¹</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="acos(">cos⁻¹</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="atan(">tan⁻¹</button></div>
-                            <div class="col-3"><button class="btn btn-info w-100" data-value="Math.E">e</button></div>
-
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="**2">x²</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="**3">x³</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="**">xʸ</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.sqrt(">√</button></div>
-
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.cbrt(">∛</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="log(">log</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="log10(">log₁₀</button></div>
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.exp(">exp</button></div>
-
-                            <div class="col-3"><button class="btn btn-light w-100" data-value="factorial(">n!</button></div>
-                            <div class="col-3"><button class="btn btn-warning w-100" data-value="%">%</button></div>
-                            <div class="col-3"><button class="btn btn-secondary w-100" data-value="(">(</button></div>
-                            <div class="col-3"><button class="btn btn-secondary w-100" data-value=")">)</button></div>
-
-                            <!-- Basic -->
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="7">7</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="8">8</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="9">9</button></div>
-                            <div class="col-3"><button class="btn btn-warning w-100" data-value="/">/</button></div>
-
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="4">4</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="5">5</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="6">6</button></div>
-                            <div class="col-3"><button class="btn btn-warning w-100" data-value="*">*</button></div>
-
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="1">1</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="2">2</button></div>
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="3">3</button></div>
-                            <div class="col-3"><button class="btn btn-warning w-100" data-value="-">-</button></div>
-
-                            <div class="col-3"><button class="btn btn-primary w-100" data-value="0">0</button></div>
-                            <div class="col-3"><button class="btn btn-secondary w-100" data-value=".">.</button></div>
-                            <div class="col-3"><button class="btn btn-success w-100" id="equals">=</button></div>
-                            <div class="col-3"><button class="btn btn-warning w-100" data-value="+">+</button></div>
-
-                            <div class="col-6"><button class="btn btn-danger w-100" id="clear-all">AC</button></div>
-                            <div class="col-6"><button class="btn btn-danger w-100" id="clear-entry">C</button></div>
-                        </div>
-                    </div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column column-60">
+                <h1>Calculadora Científica</h1>
+                <input type="text" id="display" readonly>
+                <div class="row buttons-grid">
+                    <!-- Scientific -->
+                    <div class="column"><button class="button button-outline" data-value="sin(">sin</button></div>
+                    <div class="column"><button class="button button-outline" data-value="cos(">cos</button></div>
+                    <div class="column"><button class="button button-outline" data-value="tan(">tan</button></div>
+                    <div class="column"><button class="button" data-value="Math.PI">π</button></div>
+                    <div class="column"><button class="button button-outline" data-value="asin(">sin⁻¹</button></div>
+                    <div class="column"><button class="button button-outline" data-value="acos(">cos⁻¹</button></div>
+                    <div class="column"><button class="button button-outline" data-value="atan(">tan⁻¹</button></div>
+                    <div class="column"><button class="button" data-value="Math.E">e</button></div>
+                    <div class="column"><button class="button button-outline" data-value="**2">x²</button></div>
+                    <div class="column"><button class="button button-outline" data-value="**3">x³</button></div>
+                    <div class="column"><button class="button button-outline" data-value="**">xʸ</button></div>
+                    <div class="column"><button class="button button-outline" data-value="Math.sqrt(">√</button></div>
+                    <div class="column"><button class="button button-outline" data-value="Math.cbrt(">∛</button></div>
+                    <div class="column"><button class="button button-outline" data-value="log(">log</button></div>
+                    <div class="column"><button class="button button-outline" data-value="log10(">log₁₀</button></div>
+                    <div class="column"><button class="button button-outline" data-value="Math.exp(">exp</button></div>
+                    <div class="column"><button class="button button-outline" data-value="factorial(">n!</button></div>
+                    <div class="column"><button class="button" data-value="%">%</button></div>
+                    <div class="column"><button class="button" data-value="(">(</button></div>
+                    <div class="column"><button class="button" data-value=")">)</button></div>
+                    <!-- Basic -->
+                    <div class="column"><button class="button" data-value="7">7</button></div>
+                    <div class="column"><button class="button" data-value="8">8</button></div>
+                    <div class="column"><button class="button" data-value="9">9</button></div>
+                    <div class="column"><button class="button" data-value="/">/</button></div>
+                    <div class="column"><button class="button" data-value="4">4</button></div>
+                    <div class="column"><button class="button" data-value="5">5</button></div>
+                    <div class="column"><button class="button" data-value="6">6</button></div>
+                    <div class="column"><button class="button" data-value="*">*</button></div>
+                    <div class="column"><button class="button" data-value="1">1</button></div>
+                    <div class="column"><button class="button" data-value="2">2</button></div>
+                    <div class="column"><button class="button" data-value="3">3</button></div>
+                    <div class="column"><button class="button" data-value="-">-</button></div>
+                    <div class="column"><button class="button" data-value="0">0</button></div>
+                    <div class="column"><button class="button" data-value=".">.</button></div>
+                    <div class="column"><button class="button button-primary" id="equals">=</button></div>
+                    <div class="column"><button class="button" data-value="+">+</button></div>
+                    <div class="column"><button class="button button-clear" id="clear-all">AC</button></div>
+                    <div class="column"><button class="button button-clear" id="clear-entry">C</button></div>
                 </div>
             </div>
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                <div class="card shadow">
-                    <div class="card-body p-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title">Utilidades</h3>
-                            <button class="btn btn-sm btn-outline-secondary" id="theme-toggle">🌙</button>
-                        </div>
-                        <!-- History -->
-                        <div class="mb-4">
-                            <h4>Historial</h4>
-                            <ul id="history-list" class="list-group"></ul>
-                        </div>
-                        <!-- Notes -->
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4>Notas</h4>
-                                <button id="add-note-btn" class="btn btn-sm btn-primary">+</button>
-                            </div>
-                            <ul id="notes-list" class="list-group mt-2"></ul>
-                        </div>
+            <div class="column column-40">
+                <div class="sidebar">
+                    <h3>Historial</h3>
+                    <ul id="history-list"></ul>
+                    <hr>
+                    <h3>Notas</h3>
+                    <div id="notes-container">
+                        <button id="add-note-btn" class="button">+</button>
+                        <div id="notes-list"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

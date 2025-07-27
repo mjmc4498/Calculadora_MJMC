@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById('display');
-    const buttons = document.querySelector('.row.g-2');
-    if (!buttons) {
-        console.error("Calculator buttons container not found.");
-        return;
-    }
+    const buttons = document.querySelector('.buttons-grid');
     const clearAllBtn = document.getElementById('clear-all');
     const clearEntryBtn = document.getElementById('clear-entry');
     const equalsBtn = document.getElementById('equals');
@@ -50,17 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Equals
     equalsBtn.addEventListener('click', calculate);
 
-    // Theme toggle
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-bs-theme');
-        if (currentTheme === 'dark') {
-            document.body.setAttribute('data-bs-theme', 'light');
-            themeToggleBtn.textContent = '🌙';
-        } else {
-            document.body.setAttribute('data-bs-theme', 'dark');
-            themeToggleBtn.textContent = '☀️';
-        }
-    });
+    // Theme toggle is removed as Milligram doesn't have a dark mode by default
 
     // Copy to clipboard is removed
 
@@ -104,9 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addToHistory(expression, result) {
         const li = document.createElement('li');
-        li.className = 'list-group-item';
         li.textContent = `${expression} = ${result}`;
-        historyList.prepend(li); // Prepend to show newest first
+        historyList.prepend(li);
     }
 
     const addNoteBtn = document.getElementById('add-note-btn');
@@ -116,13 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderNotes() {
         notesList.innerHTML = '';
         notes.forEach((noteText, index) => {
-            const li = document.createElement('li');
-            li.className = 'list-group-item';
-            li.innerHTML = `
-                <input type="text" class="form-control note-text" value="${noteText}" data-index="${index}">
-                <button class="btn btn-sm btn-danger delete-note-btn" data-index="${index}">X</button>
+            const noteDiv = document.createElement('div');
+            noteDiv.className = 'note';
+            noteDiv.innerHTML = `
+                <input type="text" value="${noteText}" data-index="${index}">
+                <button class="button-clear delete-note-btn" data-index="${index}">X</button>
             `;
-            notesList.appendChild(li);
+            notesList.appendChild(noteDiv);
         });
     }
 
