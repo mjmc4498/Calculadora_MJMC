@@ -72,9 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDisplay();
     }
 
+    const historyList = document.getElementById('history-list');
+
     function calculate() {
         try {
-            // Replace custom functions
             let evalInput = currentInput.replace(/sin\(/g, 'Math.sin(');
             evalInput = evalInput.replace(/cos\(/g, 'Math.cos(');
             evalInput = evalInput.replace(/tan\(/g, 'Math.tan(');
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             evalInput = evalInput.replace(/factorial\(/g, 'factorial(');
 
             const result = eval(evalInput);
+            addToHistory(currentInput, result);
             currentInput = result.toString();
             updateDisplay();
         } catch (error) {
@@ -93,6 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDisplay();
         }
     }
+
+    function addToHistory(expression, result) {
+        const li = document.createElement('li');
+        li.textContent = `${expression} = ${result}`;
+        historyList.appendChild(li);
+    }
+
+    const notes = document.getElementById('notes');
+
+    // Load saved notes
+    if (localStorage.getItem('savedNotes')) {
+        notes.value = localStorage.getItem('savedNotes');
+    }
+
+    // Save notes on input
+    notes.addEventListener('input', () => {
+        localStorage.setItem('savedNotes', notes.value);
+    });
 
     function factorial(n) {
         if (n < 0) return NaN;

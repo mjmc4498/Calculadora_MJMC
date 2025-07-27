@@ -7,59 +7,71 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="display-container">
-            <input type="text" id="display" readonly>
-            <button id="copy-btn">Copiar</button>
+    <div class="main-container">
+        <div class="calculator">
+            <div class="display-container">
+                <input type="text" id="display" readonly>
+                <button id="copy-btn">Copiar</button>
+            </div>
+            <div class="buttons">
+                <!-- Fila 1 -->
+                <button class="operator" data-value="sin(">sin</button>
+                <button class="operator" data-value="cos(">cos</button>
+                <button class="operator" data-value="tan(">tan</button>
+                <button class="operator" data-value="Math.PI">π</button>
+                <button id="clear-all">AC</button>
+                <!-- Fila 2 -->
+                <button class="operator" data-value="asin(">sin⁻¹</button>
+                <button class="operator" data-value="acos(">cos⁻¹</button>
+                <button class="operator" data-value="atan(">tan⁻¹</button>
+                <button class="operator" data-value="Math.E">e</button>
+                <button id="clear-entry">C</button>
+                <!-- Fila 3 -->
+                <button class="operator" data-value="**2">x²</button>
+                <button class="operator" data-value="**3">x³</button>
+                <button class="operator" data-value="**">xʸ</button>
+                <button class="operator" data-value="Math.sqrt(">√</button>
+                <button class="operator" data-value="Math.cbrt(">∛</button>
+                <!-- Fila 4 -->
+                <button class="operator" data-value="log(">log</button>
+                <button class="operator" data-value="log10(">log₁₀</button>
+                <button class="operator" data-value="Math.exp(">exp</button>
+                <button class="operator" data-value="factorial(">n!</button>
+                <button class="operator" data-value="%">%</button>
+                <!-- Fila 5 -->
+                <button class="number" data-value="7">7</button>
+                <button class="number" data-value="8">8</button>
+                <button class="number" data-value="9">9</button>
+                <button class="operator" data-value="/">/</button>
+                <button class="operator" data-value="(">(</button>
+                <!-- Fila 6 -->
+                <button class="number" data-value="4">4</button>
+                <button class="number" data-value="5">5</button>
+                <button class="number" data-value="6">6</button>
+                <button class="operator" data-value="*">*</button>
+                <button class="operator" data-value=")">)</button>
+                <!-- Fila 7 -->
+                <button class="number" data-value="1">1</button>
+                <button class="number" data-value="2">2</button>
+                <button class="number" data-value="3">3</button>
+                <button class="operator" data-value="-">-</button>
+                <button id="equals">=</button>
+                <!-- Fila 8 -->
+                <button class="number" data-value="0">0</button>
+                <button class="number" data-value=".">.</button>
+                <button id="theme-toggle">🌙</button>
+                <button class="operator" data-value="+">+</button>
+            </div>
         </div>
-        <div class="buttons">
-            <!-- Fila 1 -->
-            <button class="operator" data-value="sin(">sin</button>
-            <button class="operator" data-value="cos(">cos</button>
-            <button class="operator" data-value="tan(">tan</button>
-            <button class="operator" data-value="Math.PI">π</button>
-            <button id="clear-all">AC</button>
-            <!-- Fila 2 -->
-            <button class="operator" data-value="asin(">sin⁻¹</button>
-            <button class="operator" data-value="acos(">cos⁻¹</button>
-            <button class="operator" data-value="atan(">tan⁻¹</button>
-            <button class="operator" data-value="Math.E">e</button>
-            <button id="clear-entry">C</button>
-            <!-- Fila 3 -->
-            <button class="operator" data-value="**2">x²</button>
-            <button class="operator" data-value="**3">x³</button>
-            <button class="operator" data-value="**">xʸ</button>
-            <button class="operator" data-value="Math.sqrt(">√</button>
-            <button class="operator" data-value="Math.cbrt(">∛</button>
-            <!-- Fila 4 -->
-            <button class="operator" data-value="log(">log</button>
-            <button class="operator" data-value="log10(">log₁₀</button>
-            <button class="operator" data-value="Math.exp(">exp</button>
-            <button class="operator" data-value="factorial(">n!</button>
-            <button class="operator" data-value="%">%</button>
-            <!-- Fila 5 -->
-            <button class="number" data-value="7">7</button>
-            <button class="number" data-value="8">8</button>
-            <button class="number" data-value="9">9</button>
-            <button class="operator" data-value="/">/</button>
-            <button class="operator" data-value="(">(</button>
-            <!-- Fila 6 -->
-            <button class="number" data-value="4">4</button>
-            <button class="number" data-value="5">5</button>
-            <button class="number" data-value="6">6</button>
-            <button class="operator" data-value="*">*</button>
-            <button class="operator" data-value=")">)</button>
-            <!-- Fila 7 -->
-            <button class="number" data-value="1">1</button>
-            <button class="number" data-value="2">2</button>
-            <button class="number" data-value="3">3</button>
-            <button class="operator" data-value="-">-</button>
-            <button id="equals">=</button>
-            <!-- Fila 8 -->
-            <button class="number" data-value="0">0</button>
-            <button class="number" data-value=".">.</button>
-            <button id="theme-toggle">🌙</button>
-            <button class="operator" data-value="+">+</button>
+        <div class="sidebar">
+            <div class="history-container">
+                <h3>Historial</h3>
+                <ul id="history-list"></ul>
+            </div>
+            <div class="notes-container">
+                <h3>Notas</h3>
+                <textarea id="notes" placeholder="Escribe tus notas aquí..."></textarea>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
