@@ -48,14 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme toggle
     themeToggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        themeToggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        const currentTheme = document.body.getAttribute('data-bs-theme');
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-bs-theme', 'light');
+            themeToggleBtn.textContent = '🌙';
+        } else {
+            document.body.setAttribute('data-bs-theme', 'dark');
+            themeToggleBtn.textContent = '☀️';
+        }
     });
 
     // Copy to clipboard
     copyBtn.addEventListener('click', () => {
-        display.select();
-        document.execCommand('copy');
+        navigator.clipboard.writeText(display.value);
     });
 
     function updateDisplay() {
@@ -98,8 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addToHistory(expression, result) {
         const li = document.createElement('li');
+        li.className = 'list-group-item';
         li.textContent = `${expression} = ${result}`;
-        historyList.appendChild(li);
+        historyList.prepend(li); // Prepend to show newest first
     }
 
     const notes = document.getElementById('notes');

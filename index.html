@@ -4,76 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Científica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="main-container">
-        <div class="calculator">
-            <div class="display-container">
-                <input type="text" id="display" readonly>
-                <button id="copy-btn">Copiar</button>
+<body data-bs-theme="light">
+    <div class="container-fluid vh-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="row w-100" style="max-width: 1200px;">
+            <!-- Calculator -->
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <div class="input-group mb-3">
+                            <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
+                            <button class="btn btn-outline-secondary" id="copy-btn">Copiar</button>
+                        </div>
+                        <div class="row g-2">
+                            <!-- Scientific -->
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="sin(">sin</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="cos(">cos</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="tan(">tan</button></div>
+                            <div class="col-3"><button class="btn btn-info w-100" data-value="Math.PI">π</button></div>
+
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="asin(">sin⁻¹</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="acos(">cos⁻¹</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="atan(">tan⁻¹</button></div>
+                            <div class="col-3"><button class="btn btn-info w-100" data-value="Math.E">e</button></div>
+
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="**2">x²</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="**3">x³</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="**">xʸ</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.sqrt(">√</button></div>
+
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.cbrt(">∛</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="log(">log</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="log10(">log₁₀</button></div>
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="Math.exp(">exp</button></div>
+
+                            <div class="col-3"><button class="btn btn-light w-100" data-value="factorial(">n!</button></div>
+                            <div class="col-3"><button class="btn btn-warning w-100" data-value="%">%</button></div>
+                            <div class="col-3"><button class="btn btn-secondary w-100" data-value="(">(</button></div>
+                            <div class="col-3"><button class="btn btn-secondary w-100" data-value=")">)</button></div>
+
+                            <!-- Basic -->
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="7">7</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="8">8</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="9">9</button></div>
+                            <div class="col-3"><button class="btn btn-warning w-100" data-value="/">/</button></div>
+
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="4">4</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="5">5</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="6">6</button></div>
+                            <div class="col-3"><button class="btn btn-warning w-100" data-value="*">*</button></div>
+
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="1">1</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="2">2</button></div>
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="3">3</button></div>
+                            <div class="col-3"><button class="btn btn-warning w-100" data-value="-">-</button></div>
+
+                            <div class="col-3"><button class="btn btn-primary w-100" data-value="0">0</button></div>
+                            <div class="col-3"><button class="btn btn-secondary w-100" data-value=".">.</button></div>
+                            <div class="col-3"><button class="btn btn-success w-100" id="equals">=</button></div>
+                            <div class="col-3"><button class="btn btn-warning w-100" data-value="+">+</button></div>
+
+                            <div class="col-6"><button class="btn btn-danger w-100" id="clear-all">AC</button></div>
+                            <div class="col-6"><button class="btn btn-danger w-100" id="clear-entry">C</button></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="buttons">
-                <!-- Fila 1 -->
-                <button class="operator" data-value="sin(">sin</button>
-                <button class="operator" data-value="cos(">cos</button>
-                <button class="operator" data-value="tan(">tan</button>
-                <button class="operator" data-value="Math.PI">π</button>
-                <button id="clear-all">AC</button>
-                <!-- Fila 2 -->
-                <button class="operator" data-value="asin(">sin⁻¹</button>
-                <button class="operator" data-value="acos(">cos⁻¹</button>
-                <button class="operator" data-value="atan(">tan⁻¹</button>
-                <button class="operator" data-value="Math.E">e</button>
-                <button id="clear-entry">C</button>
-                <!-- Fila 3 -->
-                <button class="operator" data-value="**2">x²</button>
-                <button class="operator" data-value="**3">x³</button>
-                <button class="operator" data-value="**">xʸ</button>
-                <button class="operator" data-value="Math.sqrt(">√</button>
-                <button class="operator" data-value="Math.cbrt(">∛</button>
-                <!-- Fila 4 -->
-                <button class="operator" data-value="log(">log</button>
-                <button class="operator" data-value="log10(">log₁₀</button>
-                <button class="operator" data-value="Math.exp(">exp</button>
-                <button class="operator" data-value="factorial(">n!</button>
-                <button class="operator" data-value="%">%</button>
-                <!-- Fila 5 -->
-                <button class="number" data-value="7">7</button>
-                <button class="number" data-value="8">8</button>
-                <button class="number" data-value="9">9</button>
-                <button class="operator" data-value="/">/</button>
-                <button class="operator" data-value="(">(</button>
-                <!-- Fila 6 -->
-                <button class="number" data-value="4">4</button>
-                <button class="number" data-value="5">5</button>
-                <button class="number" data-value="6">6</button>
-                <button class="operator" data-value="*">*</button>
-                <button class="operator" data-value=")">)</button>
-                <!-- Fila 7 -->
-                <button class="number" data-value="1">1</button>
-                <button class="number" data-value="2">2</button>
-                <button class="number" data-value="3">3</button>
-                <button class="operator" data-value="-">-</button>
-                <button id="equals">=</button>
-                <!-- Fila 8 -->
-                <button class="number" data-value="0">0</button>
-                <button class="number" data-value=".">.</button>
-                <button id="theme-toggle">🌙</button>
-                <button class="operator" data-value="+">+</button>
-            </div>
-        </div>
-        <div class="sidebar">
-            <div class="history-container">
-                <h3>Historial</h3>
-                <ul id="history-list"></ul>
-            </div>
-            <div class="notes-container">
-                <h3>Notas</h3>
-                <textarea id="notes" placeholder="Escribe tus notas aquí..."></textarea>
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="card-title">Utilidades</h3>
+                            <button class="btn btn-sm btn-outline-secondary" id="theme-toggle">🌙</button>
+                        </div>
+                        <!-- History -->
+                        <div class="mb-4">
+                            <h4>Historial</h4>
+                            <ul id="history-list" class="list-group"></ul>
+                        </div>
+                        <!-- Notes -->
+                        <div>
+                            <h4>Notas</h4>
+                            <textarea id="notes" class="form-control" placeholder="Escribe tus notas aquí..."></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
