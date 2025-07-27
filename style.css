@@ -17,8 +17,16 @@ body {
     overflow-y: auto;
 }
 
-#notes {
-    height: 150px;
+#notes-list .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-text {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
 }
 
 [data-bs-theme="dark"] #history-list .list-group-item {

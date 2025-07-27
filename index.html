@@ -14,9 +14,8 @@
             <div class="col-lg-8">
                 <div class="card shadow">
                     <div class="card-body p-4">
-                        <div class="input-group mb-3">
+                        <div class="mb-3">
                             <input type="text" id="display" class="form-control form-control-lg text-end" readonly>
-                            <button class="btn btn-outline-secondary" id="copy-btn">Copiar</button>
                         </div>
                         <div class="row g-2">
                             <!-- Scientific -->
@@ -87,8 +86,11 @@
                         </div>
                         <!-- Notes -->
                         <div>
-                            <h4>Notas</h4>
-                            <textarea id="notes" class="form-control" placeholder="Escribe tus notas aquí..."></textarea>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Notas</h4>
+                                <button id="add-note-btn" class="btn btn-sm btn-primary">+</button>
+                            </div>
+                            <ul id="notes-list" class="list-group mt-2"></ul>
                         </div>
                     </div>
                 </div>

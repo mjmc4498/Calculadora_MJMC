@@ -58,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Copy to clipboard
-    copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(display.value);
-    });
+    // Copy to clipboard is removed
 
     function updateDisplay() {
         display.value = currentInput;
@@ -108,17 +105,51 @@ document.addEventListener('DOMContentLoaded', () => {
         historyList.prepend(li); // Prepend to show newest first
     }
 
-    const notes = document.getElementById('notes');
+    const addNoteBtn = document.getElementById('add-note-btn');
+    const notesList = document.getElementById('notes-list');
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
 
-    // Load saved notes
-    if (localStorage.getItem('savedNotes')) {
-        notes.value = localStorage.getItem('savedNotes');
+    function renderNotes() {
+        notesList.innerHTML = '';
+        notes.forEach((noteText, index) => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.innerHTML = `
+                <input type="text" class="form-control note-text" value="${noteText}" data-index="${index}">
+                <button class="btn btn-sm btn-danger delete-note-btn" data-index="${index}">X</button>
+            `;
+            notesList.appendChild(li);
+        });
     }
 
-    // Save notes on input
-    notes.addEventListener('input', () => {
-        localStorage.setItem('savedNotes', notes.value);
+    function saveNotes() {
+        localStorage.setItem('notes', JSON.stringify(notes));
+    }
+
+    addNoteBtn.addEventListener('click', () => {
+        notes.push('Nueva nota');
+        renderNotes();
+        saveNotes();
     });
+
+    notesList.addEventListener('input', (event) => {
+        if (event.target.classList.contains('note-text')) {
+            const index = event.target.dataset.index;
+            notes[index] = event.target.value;
+            saveNotes();
+        }
+    });
+
+    notesList.addEventListener('click', (event) => {
+        if (event.target.classList.contains('delete-note-btn')) {
+            const index = event.target.dataset.index;
+            notes.splice(index, 1);
+            renderNotes();
+            saveNotes();
+        }
+    });
+
+    renderNotes();
 
     function factorial(n) {
         if (n < 0) return NaN;
