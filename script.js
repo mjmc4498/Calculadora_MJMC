@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById('display');
-    const buttons = document.querySelector('.buttons');
+    const buttons = document.querySelector('.row.g-2');
+    if (!buttons) {
+        console.error("Calculator buttons container not found.");
+        return;
+    }
     const clearAllBtn = document.getElementById('clear-all');
     const clearEntryBtn = document.getElementById('clear-entry');
     const equalsBtn = document.getElementById('equals');
